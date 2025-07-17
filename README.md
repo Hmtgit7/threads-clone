@@ -1,7 +1,7 @@
 # Threads Clone
 
 <p align="center">
-  <img src="frontend/public/thread.png" alt="Threads Clone Logo" width="180" />
+  <img src="frontend/public/thread.png" alt="Threads Clone Logo" width="240" />
 </p>
 
 ## 🚀 Threads Clone – Real-Time Social App
@@ -44,7 +44,7 @@ Welcome to my full-stack Threads Clone! This project is a robust, production-rea
 ## 📸 Screenshots
 
 <p align="center">
-  <img src="frontend/public/thread.png" alt="Threads App Screenshot" width="400" />
+  <img src="frontend/public/thread.png" alt="Threads App Screenshot" width="600" />
 </p>
 
 ---
