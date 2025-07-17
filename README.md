@@ -1,7 +1,7 @@
 # Threads Clone
 
 <p align="center">
-  <img src="frontend/public/thread.png" alt="Threads Clone Logo" width="240" />
+  <img src="frontend/public/thread.png" alt="Threads Clone Logo" width="600"/>
 </p>
 
 ## 🚀 Threads Clone – Real-Time Social App
