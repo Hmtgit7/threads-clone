@@ -1,5 +1,6 @@
 import { useState } from "react";
 import useShowToast from "./useShowToast";
+import { apiFetch } from "../api";
 import userAtom from "../atoms/userAtom";
 import { useRecoilValue } from "recoil";
 
@@ -18,7 +19,7 @@ const useFollowUnfollow = (user) => {
 
 		setUpdating(true);
 		try {
-			const res = await fetch(`/api/users/follow/${user._id}`, {
+			const res = await apiFetch(`/api/users/follow/${user._id}`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",

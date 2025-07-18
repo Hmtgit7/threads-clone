@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Actions from "./Actions";
 import { useEffect, useState } from "react";
 import useShowToast from "../hooks/useShowToast";
+import { apiFetch } from "../api";
 import { formatDistanceToNow } from "date-fns";
 import { DeleteIcon } from "@chakra-ui/icons";
 import { useRecoilState, useRecoilValue } from "recoil";
@@ -21,7 +22,7 @@ const Post = ({ post, postedBy }) => {
 	useEffect(() => {
 		const getUser = async () => {
 			try {
-				const res = await fetch("/api/users/profile/" + postedBy);
+				const res = await apiFetch("/api/users/profile/" + postedBy);
 				const data = await res.json();
 				if (data.error) {
 					showToast("Error", data.error, "error");
@@ -42,7 +43,7 @@ const Post = ({ post, postedBy }) => {
 			e.preventDefault();
 			if (!window.confirm("Are you sure you want to delete this post?")) return;
 
-			const res = await fetch(`/api/posts/${post._id}`, {
+			const res = await apiFetch(`/api/posts/${post._id}`, {
 				method: "DELETE",
 			});
 			const data = await res.json();

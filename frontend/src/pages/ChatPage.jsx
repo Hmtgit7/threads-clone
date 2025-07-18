@@ -5,6 +5,7 @@ import { GiConversation } from "react-icons/gi";
 import MessageContainer from "../components/MessageContainer";
 import { useEffect, useState } from "react";
 import useShowToast from "../hooks/useShowToast";
+import { apiFetch } from "../api";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { conversationsAtom, selectedConversationAtom } from "../atoms/messagesAtom";
 import userAtom from "../atoms/userAtom";
@@ -43,7 +44,7 @@ const ChatPage = () => {
 	useEffect(() => {
 		const getConversations = async () => {
 			try {
-				const res = await fetch("/api/messages/conversations");
+				const res = await apiFetch("/api/messages/conversations");
 				const data = await res.json();
 				if (data.error) {
 					showToast("Error", data.error, "error");
@@ -65,7 +66,7 @@ const ChatPage = () => {
 		e.preventDefault();
 		setSearchingUser(true);
 		try {
-			const res = await fetch(`/api/users/profile/${searchText}`);
+			const res = await apiFetch(`/api/users/profile/${searchText}`);
 			const searchedUser = await res.json();
 			if (searchedUser.error) {
 				showToast("Error", searchedUser.error, "error");

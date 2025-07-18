@@ -16,6 +16,7 @@ import {
 import { useRef, useState } from "react";
 import { IoSendSharp } from "react-icons/io5";
 import useShowToast from "../hooks/useShowToast";
+import { apiFetch } from "../api";
 import { conversationsAtom, selectedConversationAtom } from "../atoms/messagesAtom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { BsFillImageFill } from "react-icons/bs";
@@ -39,7 +40,7 @@ const MessageInput = ({ setMessages }) => {
 		setIsSending(true);
 
 		try {
-			const res = await fetch("/api/messages", {
+			const res = await apiFetch("/api/messages", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",

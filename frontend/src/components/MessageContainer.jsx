@@ -3,6 +3,7 @@ import Message from "./Message";
 import MessageInput from "./MessageInput";
 import { useEffect, useRef, useState } from "react";
 import useShowToast from "../hooks/useShowToast";
+import { apiFetch } from "../api";
 import { conversationsAtom, selectedConversationAtom } from "../atoms/messagesAtom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import userAtom from "../atoms/userAtom";
@@ -87,7 +88,7 @@ const MessageContainer = () => {
 			setMessages([]);
 			try {
 				if (selectedConversation.mock) return;
-				const res = await fetch(`/api/messages/${selectedConversation.userId}`);
+				const res = await apiFetch(`/api/messages/${selectedConversation.userId}`);
 				const data = await res.json();
 				if (data.error) {
 					showToast("Error", data.error, "error");

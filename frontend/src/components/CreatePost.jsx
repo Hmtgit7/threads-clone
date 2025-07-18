@@ -24,6 +24,7 @@ import { BsFillImageFill } from "react-icons/bs";
 import { useRecoilState, useRecoilValue } from "recoil";
 import userAtom from "../atoms/userAtom";
 import useShowToast from "../hooks/useShowToast";
+import { apiFetch } from "../api";
 import postsAtom from "../atoms/postsAtom";
 import { useParams } from "react-router-dom";
 
@@ -57,7 +58,7 @@ const CreatePost = () => {
 	const handleCreatePost = async () => {
 		setLoading(true);
 		try {
-			const res = await fetch("/api/posts/create", {
+			const res = await apiFetch("/api/posts/create", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
