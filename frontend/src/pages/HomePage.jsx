@@ -1,4 +1,4 @@
-import { Box, Flex, Spinner } from "@chakra-ui/react";
+import { Box, Flex, Spinner, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import useShowToast from "../hooks/useShowToast";
 import { apiFetch } from "../api";
@@ -36,7 +36,7 @@ const HomePage = () => {
 	return (
 		<Flex gap='10' alignItems={"flex-start"}>
 			<Box flex={70}>
-				{!loading && posts.length === 0 && <h1>Follow some users to see the feed</h1>}
+				{!loading && Array.isArray(posts) && posts.length === 0 && <h1>Follow some users to see the feed</h1>}
 
 				{loading && (
 					<Flex justify='center'>
@@ -44,9 +44,13 @@ const HomePage = () => {
 					</Flex>
 				)}
 
-				{posts.map((post) => (
-					<Post key={post._id} post={post} postedBy={post.postedBy} />
-				))}
+				{Array.isArray(posts) ? (
+					posts.map((post) => (
+						<Post key={post._id} post={post} postedBy={post.postedBy} />
+					))
+				) : (
+					<Text color="red.500">Failed to load posts feed.</Text>
+				)}
 			</Box>
 			<Box
 				flex={30}

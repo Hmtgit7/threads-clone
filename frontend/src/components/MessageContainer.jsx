@@ -144,7 +144,7 @@ const MessageContainer = () => {
 						</Flex>
 					))}
 
-				{!loadingMessages &&
+				{!loadingMessages && Array.isArray(messages) &&
 					messages.map((message) => (
 						<Flex
 							key={message._id}
@@ -154,6 +154,9 @@ const MessageContainer = () => {
 							<Message message={message} ownMessage={currentUser._id === message.sender} />
 						</Flex>
 					))}
+				{!loadingMessages && !Array.isArray(messages) && (
+					<Text color="red.500">Failed to load messages.</Text>
+				)}
 			</Flex>
 
 			<MessageInput setMessages={setMessages} />

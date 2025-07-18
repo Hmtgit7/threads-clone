@@ -11,8 +11,7 @@ const io = new Server(server, {
 		origin: [
 			"http://localhost:5173",
 			"http://localhost:3000",
-			"https://threads-clone-two-omega.vercel.app/"
-
+			"https://threads-clone-two-omega.vercel.app"
 		],
 		methods: ["GET", "POST"],
 		credentials: true
