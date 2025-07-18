@@ -9,6 +9,7 @@ import messageRoutes from "./routes/messageRoutes.js";
 import { v2 as cloudinary } from "cloudinary";
 import { app, server } from "./socket/socket.js";
 import job from "./cron/cron.js";
+import cors from "cors";
 
 dotenv.config();
 
@@ -17,6 +18,16 @@ job.start();
 
 const PORT = process.env.PORT || 5000;
 const __dirname = path.resolve();
+
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:3000",
+  "https://threads-clone-two-omega.vercel.app"
+];
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true
+}));
 
 cloudinary.config({
 	cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
