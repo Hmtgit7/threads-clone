@@ -15,7 +15,7 @@ export const SocketContextProvider = ({ children }) => {
 	const user = useRecoilValue(userAtom);
 
 	useEffect(() => {
-		const socket = io(import.meta.env.VITE_BACKEND_URL || "http://localhost:5000", {
+		const socket = io('https://threads-clone-backend-ett3.onrender.com', {
 			query: {
 				userId: user?._id,
 			},
